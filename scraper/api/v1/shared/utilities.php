@@ -19,15 +19,16 @@ class Utilities{
         return(bool)preg_match('~HTTP/1\.\d\s+200\s+OK~', @current(get_headers($url)));
     }
 
-    public function getURL($url){
+    public function getURL($url, $agent = null){
 
         global $config;
+        if($agent == null){ $agent = $config['agent']; }
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
-        curl_setopt($ch, CURLOPT_USERAGENT, $config['agent']);
+        curl_setopt($ch, CURLOPT_USERAGENT, $agent);
         curl_exec($ch);
         $response = curl_exec($ch);
         preg_match_all('/^Location:(.*)$/mi', $response, $matches);
@@ -47,7 +48,7 @@ class Utilities{
            case "PUT":
               curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
               if ($data)
-                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);			 					
+                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);               
               break;
            default:
               if ($data)
@@ -59,6 +60,7 @@ class Utilities{
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
            'Content-Type: application/json',
         ));
+        //curl_setopt($curl, CURLOPT_USERAGENT, 'Googlebot-News');
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 

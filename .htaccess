@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^article/([A-Za-z0-9]+) article.php?uid=$1
+RewriteRule ^source/([A-Za-z0-9_]+) source.php?site=$1
+#RewriteRule ^(.*)$ article.php?uid=$1 [NC]

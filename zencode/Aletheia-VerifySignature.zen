@@ -1,0 +1,14 @@
+Rule unknown ignore 
+Rule check version 1.0.0
+Scenario 'ecdh': Verifies the signature from Aletheia 
+
+Given that I have an endpoint named 'endPoint'
+Given I have a 'string dictionary' named 'articlesSource'
+Given I have a 'public key' from 'aletheiaKeypair' 
+Given I have a 'string dictionary' named 'articles' inside 'articlesSource'
+Given I have a 'signature' named 'articles.signature' inside 'articlesSource'
+Given I connect to 'endPoint' and save the output into 'articlesSource'
+
+When I verify the 'articles' has a signature in 'articles.signature' by 'aletheiaKeypair' 
+
+Then print 'Zenroom certifies that signatures are all correct!' as 'string'
