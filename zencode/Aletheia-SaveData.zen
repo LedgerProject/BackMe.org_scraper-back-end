@@ -10,11 +10,21 @@ Given that I have an endpoint named 'aletheiaConfirm'
 Given I have a 'string dictionary' named 'articles'
 Given I connect to 'aletheiaLatest' and save the output into 'articles'
 
+When I create the 'string dictionary'
+When I rename the 'string dictionary' to 'aletheiaLastSigned'
+
 When I create the signature of 'articles' 
 When I rename the 'signature' to 'articles.signature' 
+#When I create the hash of 'articles'
+#When I rename the 'hash' to 'articles.hash'
+When I insert 'articles' in 'aletheiaLastSigned'
+When I insert 'articles.signature' in 'aletheiaLastSigned'
 
-#When I insert 'articles' in 'aletheiaConfirm'
+#Then print 'articles.hash'
+#Then print 'articles'
+#Then print 'articles.signature'
+Then print 'aletheiaLastSigned'
+Then pass the output to 'aletheiaConfirm' 
 
-Then print 'articles'
-Then print 'articles.signature'
-Then pass the output to 'aletheiaConfirm'
+
+
