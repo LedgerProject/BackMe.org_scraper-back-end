@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /article/
+Disallow: /source/
+Sitemap: https://rewrited.news/sitemap.xml

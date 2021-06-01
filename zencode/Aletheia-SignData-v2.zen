@@ -1,0 +1,31 @@
+Rule unknown ignore 
+Rule check version 1.0.0
+#Rule output format JSON
+Scenario 'ecdh': Save data to the blockchain
+
+Given I am 'aletheiaKeypair'
+Given I have my 'keypair'
+Given that I have an endpoint named 'aletheiaLatest'   
+Given that I have an endpoint named 'aletheiaConfirm'
+Given I have a 'hex dictionary' named 'articles'
+Given I connect to 'aletheiaLatest' and save the output into 'articles'
+
+When I create the 'string dictionary'
+When I rename the 'string dictionary' to 'aletheiaLastSigned'
+
+When I create the signature of 'articles' 
+When I rename the 'signature' to 'articles.signature' 
+#When I create the hash of 'articles'
+#When I rename the 'hash' to 'articles.hash'
+# When I insert 'articles' in 'aletheiaLastSigned'
+# When I insert 'articles.signature' in 'aletheiaLastSigned'
+
+#Then print 'articles.hash'
+#Then print 'articles'
+#Then print 'articles.signature'
+Then print 'articles'
+Then print 'articles.signature'
+Then pass the output to 'aletheiaConfirm' 
+
+
+
